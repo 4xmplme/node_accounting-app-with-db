@@ -54,7 +54,7 @@ const getOne = (id) => {
   return expense;
 };
 
-const update = async ({ id, ...payload }) => {
+const update = async (id, payload) => {
   // eslint-disable-next-line no-unused-vars
   const [_expensesUpdated, [updatedExpense]] = await Expense.update(payload, {
     where: { id },

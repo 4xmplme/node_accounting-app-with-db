@@ -20,7 +20,7 @@ const getOne = (id) => {
   return user;
 };
 
-const update = async ({ id, name }) => {
+const update = async (id, { name }) => {
   // eslint-disable-next-line no-unused-vars
   const [_usersUpdated, [updatedUser]] = await User.update(
     { name },

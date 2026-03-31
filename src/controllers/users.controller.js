@@ -32,24 +32,28 @@ const getOne = async (req, res) => {
 
 const update = async (req, res) => {
   const { id } = req.params;
+  const { name } = req.body;
   const user = await usersService.getOne(Number(id));
 
   if (!user) {
     return res.sendStatus(404);
   }
 
-  const updatedUser = await usersService.update({
-    id: Number(id),
-    name: req.body.name,
+  if (!name) {
+    return res.sendStatus(400);
+  }
+
+  const updatedUser = await usersService.update(Number(id), {
+    name,
   });
 
   res.json(usersService.normalize(updatedUser));
 };
 
 const remove = async (req, res) => {
-  const user = await usersService.remove(Number(req.params.id));
+  const usersRemoved = await usersService.remove(Number(req.params.id));
 
-  if (!user) {
+  if (!usersRemoved) {
     return res.sendStatus(404);
   }
 

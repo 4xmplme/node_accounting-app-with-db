@@ -32,24 +32,30 @@ const getOne = async (req, res) => {
 
 const update = async (req, res) => {
   const { id } = req.params;
+  const { name } = req.body;
   const category = await categoriesService.getOne(Number(id));
 
   if (!category) {
     return res.sendStatus(404);
   }
 
-  const updatedcategory = await categoriesService.update({
-    id: Number(id),
-    name: req.body.name,
+  if (!name) {
+    return res.sendStatus(400);
+  }
+
+  const updatedCategory = await categoriesService.update(Number(id), {
+    name,
   });
 
-  res.json(categoriesService.normalize(updatedcategory));
+  res.json(categoriesService.normalize(updatedCategory));
 };
 
 const remove = async (req, res) => {
-  const category = await categoriesService.remove(Number(req.params.id));
+  const categoriesRemoved = await categoriesService.remove(
+    Number(req.params.id),
+  );
 
-  if (!category) {
+  if (!categoriesRemoved) {
     return res.sendStatus(404);
   }
 
