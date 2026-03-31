@@ -9,6 +9,7 @@ const createServer = () => {
   app.use(express.json());
   app.use('/users', routes.usersRouter);
   app.use('/expenses', routes.expensesRouter);
+  app.use('/categories', routes.categoriesRouter);
 
   return app;
 };
