@@ -1,6 +1,6 @@
 'use strict';
 
-const { sequelize } = require('../db.js');
+const { sequelize } = require('../db');
 const { DataTypes } = require('sequelize');
 
 const Expense = sequelize.define('Expense', {

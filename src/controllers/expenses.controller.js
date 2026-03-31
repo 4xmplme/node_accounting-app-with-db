@@ -1,5 +1,5 @@
-const { usersService } = require('../services/users.service.js');
-const { expensesService } = require('../services/expenses.service.js');
+const { usersService } = require('../services/users.service');
+const { expensesService } = require('../services/expenses.service');
 
 const create = async (req, res) => {
   const { userId, spentAt, title, amount, category, note } = req.body;

@@ -3,7 +3,7 @@
 const { sequelize } = require('../db');
 const { DataTypes } = require('sequelize');
 
-const User = sequelize.define('User', {
+const Category = sequelize.define('Category', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -11,5 +11,5 @@ const User = sequelize.define('User', {
 });
 
 module.exports = {
-  User,
+  Category,
 };
